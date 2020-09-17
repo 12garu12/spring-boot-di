@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
+    @Autowired // La anotacion para inyeccion de dependecia via atributo.
     private IServicio servicio;
-
-    @Autowired // La anotacion para inyeccion de dependecia via constructor.
-    public IndexController(IServicio servicio){
-        this.servicio = servicio;
-    }
 
     @GetMapping({"", "/", "/index"})
     public String index(Model model){
