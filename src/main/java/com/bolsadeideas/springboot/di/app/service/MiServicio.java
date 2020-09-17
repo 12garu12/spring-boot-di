@@ -8,7 +8,7 @@ public class MiServicio implements IServicio {
 
     @Override // Anotacion que indica que es una implementacion o de un padre ya sea interface o clase
     public String operacion(){
-        return "Ejecutando algún proceso importante...";
+        return "Ejecutando algún proceso importante simple...";
     }
 
 }
