@@ -13,8 +13,8 @@ public class IndexController {
 
     private IServicio servicio;
 
-    @Autowired // La anotacion para inyeccion de dependecia via metodo setter.
-    public void setServicio(IServicio servicio){
+    @Autowired // La anotacion para inyeccion de dependecia via constructor.
+    public IndexController(IServicio servicio){
         this.servicio = servicio;
     }
 
