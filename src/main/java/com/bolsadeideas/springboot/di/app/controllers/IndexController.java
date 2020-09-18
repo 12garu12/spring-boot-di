@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     @Autowired // La anotacion para inyeccion de dependecia via atributo y un calificador
-    @Qualifier("miServicioSimple")  /*  Cuando hay varios beans del mismo tipo, es una buena idea usar @Qualifier para evitar ambigüedades.*/
+    @Qualifier("miServicioSimple") // Con este calificador escoge el Bean apropiado segun la necesidad en este caso el Bean de la clase MiServicioComplejo.java
     private IServicio servicio;
 
     @GetMapping({"", "/", "/index"})
