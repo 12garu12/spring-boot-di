@@ -1,8 +1,9 @@
 package com.bolsadeideas.springboot.di.app;
 
-import com.bolsadeideas.springboot.di.app.service.IServicio;
-import com.bolsadeideas.springboot.di.app.service.MiServicio;
-import com.bolsadeideas.springboot.di.app.service.MiServicioComplejo;
+
+import com.bolsadeideas.springboot.di.app.models.service.IServicio;
+import com.bolsadeideas.springboot.di.app.models.service.MiServicio;
+import com.bolsadeideas.springboot.di.app.models.service.MiServicioComplejo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;

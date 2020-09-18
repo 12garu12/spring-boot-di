@@ -1,8 +1,4 @@
-package com.bolsadeideas.springboot.di.app.service;
-
-
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
+package com.bolsadeideas.springboot.di.app.models.service;
 
 
 //@Primary // Como exiten dos clases que implementan la misma interface marcamos con esta anotacion para que funcione por defecto como la primaria.
