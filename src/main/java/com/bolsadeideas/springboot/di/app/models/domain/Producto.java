@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.di.app.models.service.domain;
+package com.bolsadeideas.springboot.di.app.models.domain;
 
 public class Producto {
 

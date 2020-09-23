@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.di.app.models.service.domain;
+package com.bolsadeideas.springboot.di.app.models.domain;
 
 public class ItemFactura {
 
@@ -29,4 +29,10 @@ public class ItemFactura {
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+
+    public Integer calcularImporte(){
+        return cantidad *producto.getPrecio();
+
+    }
+
 }

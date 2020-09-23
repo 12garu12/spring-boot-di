@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.di.app.models.service.domain;
+package com.bolsadeideas.springboot.di.app.models.domain;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Cliente {
 
-    @Value("${cliente.nombre") // Se define en application.properties
+    @Value("${cliente.nombre}") // Se define en application.properties
     private String nombre;
 
     @Value("${cliente.apellido}") // Se define en application.properties
