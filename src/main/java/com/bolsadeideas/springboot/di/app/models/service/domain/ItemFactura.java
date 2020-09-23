@@ -5,6 +5,15 @@ public class ItemFactura {
     private Producto producto;
     private Integer cantidad;
 
+/**  Constructores ****************************************************************************************************************/
+
+    public ItemFactura(Producto producto, Integer cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+    }
+
+/**  Metodos getter and setter   ***********************************************************************************************************/
+
     public Producto getProducto() {
         return producto;
     }

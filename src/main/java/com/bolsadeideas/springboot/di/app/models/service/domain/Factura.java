@@ -10,12 +10,13 @@ import java.util.List;
 @Component
 public class Factura {
 
-    @Value("${descripcion.factura}") // Se define en application.properties
+    @Value("${factura.descripcion}") // Se define en application.properties
     private String descripcion;
 
     @Autowired
     private Cliente cliente;
 
+    @Autowired
     private List<ItemFactura> items;
 
 
