@@ -16,7 +16,8 @@ public class Factura {
     @Autowired
     private Cliente cliente;
 
-    @Autowired
+    @Autowired //
+ //   @Qualifier("itemsFacturaOficina") // la anotacion @Qualifier para cuando existen dos @Bean para la misma funcion. si el @Bean tiene la anotacion @Primary el contenedor sabra que @Bean aplicar
     private List<ItemFactura> items;
 
 
