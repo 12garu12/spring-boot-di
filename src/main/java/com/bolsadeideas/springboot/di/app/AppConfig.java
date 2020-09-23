@@ -40,6 +40,11 @@ public class AppConfig {
         return new MiServicioComplejo();
     }
 
+    /**
+     * Metodo que crea 2 objetos de tipo Producto y 2 de tipo ItemFactura el
+     * contenedor escanea todos los elementos registra y administra los @Beans.
+     * @return retorna una lista de elementos ItemFactura.
+     */
     @Bean("itemsFactura")
     public List<ItemFactura> registrarItems(){
         Producto producto1 = new Producto("Camara Sony", 100);
@@ -51,6 +56,11 @@ public class AppConfig {
         return Arrays.asList(linea1, linea2);
     }
 
+    /**
+     * Metodo que crea 4 objetos de tipo Producto y 4 de tipo ItemFactura el contenedor escanea todos los elementos y
+     * registra y administra los @Beans.
+     * @return retorna una lista de elementos ItemFactura.
+     */
     @Bean("itemsFacturaOficina")
     @Primary  // si existen 2 @Bean el contenedor sabra cual de los dos aplicar
     public List<ItemFactura> registrarItemsOficina(){
