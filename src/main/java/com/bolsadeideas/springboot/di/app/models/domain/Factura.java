@@ -3,6 +3,7 @@ package com.bolsadeideas.springboot.di.app.models.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.ApplicationScope;
 import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
@@ -23,12 +24,10 @@ import java.util.List;
  * como del request o del tipo sesion.
  */
 @Component
-@SessionScope //Se utiliza para marcar nuestro objeto como de sesion por ejemplo para trabajar con un carro de compras o un sistema de autenticacion y tenemos la clase usuario y sea persistente en la sesion HTTP
-public class Factura  implements Serializable { // Cuando se trabaja con sesiones HTTP El alcance o el ambito del objeto es lo que dura la sesion, desde que se crea el componente en el contenedor y se destruira cuando se cierre en el navegador tambien
-    // finaliza cuando ocurre un time out o cuando se invalida la sesion. Muy importante hay que tener en cuenta en qualquier objeto clase o componente que queramos guardar en una sesion http debe implementar la
-    // interface serializable para ser serializable por que cuando se transporta o se almacena un objeto de java por que si se quiere transportar guardar en la memoria o bien en un archivo XML o Jason y tambien en
-    // sesiones HTTP.
-    //
+@ApplicationScope // Es similar al singleton pero se diferencia que es un Singleton que se guarda en el contexto servlet en el servlet context y no en el aplication context de Spring
+// por ejemplo en una aplicacion web con spring vamos a tener siempre un solo application context un contexto de aplicacion y ahi es singleton pero en una aplicacion web podriamos
+// tener mas de un contexto servlet siendo la unica diferencia.
+public class Factura  implements Serializable {
 
     private static final long serialVersionUID = 946004357128146951L; // La interface Serializable nos pide generara un serialVersionUID siendo un identificador de la sesion
 
