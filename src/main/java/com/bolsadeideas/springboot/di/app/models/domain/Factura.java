@@ -3,8 +3,7 @@ package com.bolsadeideas.springboot.di.app.models.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.ApplicationScope;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.context.annotation.RequestScope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -24,9 +23,7 @@ import java.util.List;
  * como del request o del tipo sesion.
  */
 @Component
-@ApplicationScope // Es similar al singleton pero se diferencia que es un Singleton que se guarda en el contexto servlet en el servlet context y no en el aplication context de Spring
-// por ejemplo en una aplicacion web con spring vamos a tener siempre un solo application context un contexto de aplicacion y ahi es singleton pero en una aplicacion web podriamos
-// tener mas de un contexto servlet siendo la unica diferencia.
+@RequestScope
 public class Factura  implements Serializable {
 
     private static final long serialVersionUID = 946004357128146951L; // La interface Serializable nos pide generara un serialVersionUID siendo un identificador de la sesion
