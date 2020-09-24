@@ -3,14 +3,27 @@ package com.bolsadeideas.springboot.di.app.models.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
 
 
+/**
+ * ALCANCE DE LOS COMPONENTES, EL SCOPE
+ * Por defecto son del tipo Singleton mantendran una sola instancia de ese componente para toda la aplicacion
+ * y se aplica a los diferentes componentes por ejemplo los controllers, components, services y se va a utilizar
+ * en cada peticion  de los distintos clientes que esten usando la aplicacion.
+ * Hay que tener cuidado y presente que cuando es singleton no se pueden tener atributos en el controlador que
+ * sean propios del usuario ya que podrian ser modificados por otros usuarios por otras peticiones, la idea es que
+ * todos estos objetos que inyectemos sean Stateless (sin estado) que no mantenga estado ni valores en los atributos
+ * o informacion del usuario, como seria una sesion un carro de compras por ejemplo para eso se utiliza otro contexto
+ * como del request o del tipo sesion.
+ */
 @Component
-public class Factura {
+@RequestScope  // con esta anotacion el bean va a durar lo que dura una peticion http de usuario, cada usuario que se conecte va a tener una factura distinta y propia, si se modifica un valor no se altera no se modifica al reato.
+public class Factura { // con esta anotacion cuando se hace una peticion http el objeto se reconstruye en cada request y no una sola vez como es en singleton y es atomico y unico por cada peticion
 
     @Value("${factura.descripcion}") // Se define en application.properties
     private String descripcion;
@@ -19,7 +32,7 @@ public class Factura {
     private Cliente cliente;
 
     @Autowired //
- //   @Qualifier("itemsFacturaOficina") // la anotacion @Qualifier para cuando existen dos @Bean para la misma funcion. si el @Bean tiene la anotacion @Primary el contenedor sabra que @Bean aplicar
+    //   @Qualifier("itemsFacturaOficina") // la anotacion @Qualifier para cuando existen dos @Bean para la misma funcion. si el @Bean tiene la anotacion @Primary el contenedor sabra que @Bean aplicar
     private List<ItemFactura> items;
 
     /**
@@ -29,7 +42,7 @@ public class Factura {
      * objeto por el contenedor de spring.
      */
     @PostConstruct
-    public void inicializar(){
+    public void inicializar() {
         cliente.setNombre(cliente.getNombre().concat(" ").concat("Jose"));
         descripcion = descripcion.concat(" del cliente: ").concat(cliente.getNombre()).concat(" ").concat(cliente.getApellido());
     }
@@ -43,7 +56,7 @@ public class Factura {
      * la aplicación del servidor, por ejemplo se pueden cerrar recursos que tenemos con esta anotacion.
      */
     @PreDestroy
-    public void destruir(){
+    public void destruir() {
         System.out.println("Factura destruida: ".concat(descripcion));
     }
 
