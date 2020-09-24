@@ -3,10 +3,11 @@ package com.bolsadeideas.springboot.di.app.models.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -22,8 +23,14 @@ import java.util.List;
  * como del request o del tipo sesion.
  */
 @Component
-@RequestScope  // con esta anotacion el bean va a durar lo que dura una peticion http de usuario, cada usuario que se conecte va a tener una factura distinta y propia, si se modifica un valor no se altera no se modifica al reato.
-public class Factura { // con esta anotacion cuando se hace una peticion http el objeto se reconstruye en cada request y no una sola vez como es en singleton y es atomico y unico por cada peticion
+@SessionScope //Se utiliza para marcar nuestro objeto como de sesion por ejemplo para trabajar con un carro de compras o un sistema de autenticacion y tenemos la clase usuario y sea persistente en la sesion HTTP
+public class Factura  implements Serializable { // Cuando se trabaja con sesiones HTTP El alcance o el ambito del objeto es lo que dura la sesion, desde que se crea el componente en el contenedor y se destruira cuando se cierre en el navegador tambien
+    // finaliza cuando ocurre un time out o cuando se invalida la sesion. Muy importante hay que tener en cuenta en qualquier objeto clase o componente que queramos guardar en una sesion http debe implementar la
+    // interface serializable para ser serializable por que cuando se transporta o se almacena un objeto de java por que si se quiere transportar guardar en la memoria o bien en un archivo XML o Jason y tambien en
+    // sesiones HTTP.
+    //
+
+    private static final long serialVersionUID = 946004357128146951L; // La interface Serializable nos pide generara un serialVersionUID siendo un identificador de la sesion
 
     @Value("${factura.descripcion}") // Se define en application.properties
     private String descripcion;
